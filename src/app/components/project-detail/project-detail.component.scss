@@ -1,0 +1,101 @@
+
+
+.delete-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.top-div {
+    flex: 1 1 30%;
+}
+
+.bottom-div {
+    flex: 1 1 70%;
+}
+
+.gallery {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    scrollbar-width: thin;
+}
+
+.gallery div {
+    flex: 0 0 20%; 
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.gallery-container {
+    position: relative;
+    margin-right: 30px;
+}
+
+tr {
+    max-height: 40px;
+    min-height: 40px;
+    height: 40px;
+}
+
+td {
+    width: 500px;
+    font-size: large;
+}
+
+.vis-button {
+    margin-left: 20px;
+}
+
+.fixed-names-row-size {
+    width: 230px;
+    font-size: x-large;
+}
+
+.edit-button {
+    margin-right: 10px;
+}
+
+.edit-mat-icon {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+}
+
+.visualized-lable {
+    padding-left: 58px;
+}
+
+.aimodel-lable {
+    padding-left: 58px;
+}
+
+.project-details-table {
+    margin-bottom: 20px;
+}
+
+.space-left {
+    margin-left: 10px;
+}
+@media (max-width:800px) { 
+    
+}
