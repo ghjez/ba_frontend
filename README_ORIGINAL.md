@@ -1,7 +1,3 @@
-# ba_frontend
-This is a part of my bachelor thesis on deploying a technical drawing processing web application. The original [frontend](https://github.com/ailujezi/technical-drawings-frontend) was created by [ailujezi](https://github.com/ailujezi).
-
-Original Readme:
 
 # Technical Drawings Frontend
 This is the repository for the "Technical Drawings Frontend" Angular project.
