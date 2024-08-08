@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="selcted-image-overlays-container">
-            <div data-cy="visualization-selcted-img-container" *ngIf="selectedImage" class="selected-image-container">
+            <div data-cy="visualization-selected-img-container" *ngIf="selectedImage" class="selected-image-container">
                 <img data-cy="visualization-selected-img" #imageElement [attr.src]="selectedImage.image_url | secure | async" [alt]="selectedImage.name" (load)="reloadLables()"/>
                 <label data-cy="visualization-selected-img-overlay" [class.selected-overlay]="isSelected(overlay)" id="overlays"  *ngFor="let overlay of overlays" [ngStyle]="getOverlayStyle(imageElement, overlay)" (click)="selectOverlay(overlay)">
                 </label>

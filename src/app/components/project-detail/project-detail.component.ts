@@ -25,12 +25,14 @@ import { InformationExchangeService } from '../../services/information-exchange.
 import { SelectedProjectService } from '../../services/selected-project.service';
 import { EditDescriptionComponent } from '../edit-description/edit-description.component';
 import { EditNameComponent } from '../edit-name/edit-name.component';
+import { AiChainModule } from '../../interfaces/ai_chain_module';
+import { ChainConfigComponent } from '../chain-config/chain-config.component';
 
 
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, FormsModule, SecurePipe, MatGridListModule, ReactiveFormsModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, FormsModule, SecurePipe, MatGridListModule, ReactiveFormsModule, ChainConfigComponent],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
 })
@@ -51,6 +53,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   images: Image[] = [];
   aiModelName: string = "";
   aiModels: AiModel[] = [];
+  aiChainModules: AiChainModule[] = [];
+  selectedAiChainModules: AiChainModule[] = [];
 
   /* form: FormGroup = this.formBuilder.group({
     //........
@@ -70,9 +74,11 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
           this.aiModelName = this.aiModels[i].name;
         }
       }
+      this.getAiChainModules();
     });
     //Get AIModels on init
-    this.getAIModels();
+    //this.getAIModels();
+    
   }
 
   selectedFiles: File[] = [];
@@ -194,7 +200,13 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     if (this.selectedProject) {
       const currentProjectId = this.selectedProject.id;
       if (this.images.length == 0) return;
-      this.resultService.startVisualization(currentProjectId).pipe(
+
+      let selectedAiChainModulesIdList = [];
+      for(let module of this.selectedAiChainModules) {
+        selectedAiChainModulesIdList.push(module.id)
+      }
+
+      this.resultService.startVisualization(currentProjectId, selectedAiChainModulesIdList).pipe(
         tap(response => {
           this.informationExchangeService.addEntry(currentProjectId, true);
           const pollingInterval = 1000;
@@ -229,7 +241,13 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     if (this.selectedProject) {
       const currentProjectId = this.selectedProject.id;
       if (this.images.length == 0) return;
-      this.resultService.startVisualizationRest(currentProjectId).pipe(
+
+      let selectedAiChainModulesIdList = [];
+      for(let module of this.selectedAiChainModules) {
+        selectedAiChainModulesIdList.push(module.id)
+      }
+
+      this.resultService.startVisualizationRest(currentProjectId, selectedAiChainModulesIdList).pipe(
         tap(response => {
           this.informationExchangeService.addEntry(currentProjectId, true);
           const pollingInterval = 1000;
@@ -270,6 +288,26 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         return of(null);
       })
     ).subscribe();
+  }
+
+  getAiChainModules() {
+    if(this.selectedProject){
+      console.log("Getting Modules");
+      this.projectService.getAIChainModules(this.selectedProject.id).pipe(
+        tap(response => {
+          this.aiChainModules = response;
+        }),
+        catchError(error => {
+          console.error("Could not get aiChainModules", error);
+          return of(null);
+        })
+      ).subscribe();
+    }
+  }
+
+  setAiSelected(data: AiChainModule[]) {
+    this.selectedAiChainModules = data;
+    console.log(this.selectedAiChainModules);
   }
 
   checkCondition(project: Project): boolean {

@@ -8,6 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { param } from 'cypress/types/jquery';
+import { AiChainModule } from '../interfaces/ai_chain_module';
 
 
 @Injectable({
@@ -66,6 +67,11 @@ export class ProjectService {
   getAIModels(): Observable<AiModel[]> {
     const url = 'store/ais/';
     return this.http.get<AiModel[]>(url);
+  }
+
+  getAIChainModules(project_id: number): Observable<AiChainModule[]> {
+    const url = 'store/projects/';
+    return this.http.get<AiChainModule[]>(`${url}${project_id}/modules`);
   }
 
   deleteImg(projectId: number, imageId: number) {

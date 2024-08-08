@@ -16,14 +16,14 @@ export class ResultsService {
   constructor(private http: HttpClient) {
   }
 
-  startVisualization(projectId: number) {
+  startVisualization(projectId: number, aiChainModuleList: number[]) {
     const url = 'store/projects';
-    return this.http.post(`${url}/${projectId}/start/`, null);
+    return this.http.post(`${url}/${projectId}/start/`, aiChainModuleList);
   }
 
-  startVisualizationRest(projectId: number) {
+  startVisualizationRest(projectId: number, aiChainModuleList: number[]) {
     const url = 'store/projects';
-    return this.http.post(`${url}/${projectId}/start_rest/`, null);
+    return this.http.post(`${url}/${projectId}/start_rest/`, aiChainModuleList);
   }
 
   getOverlays(projectId: number): Observable<Results[]> {

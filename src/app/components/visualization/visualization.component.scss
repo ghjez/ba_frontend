@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 
 .selected-image-container img {
     width: 100%;
@@ -6,12 +7,25 @@
 .thumbnail {
     position: relative;
     display: inline-block;
+    box-sizing: border-box;
     cursor: pointer;
+    height: 90px;
+    width: 90px;
+    margin: .5%;
+
+    &:first-child {
+        margin-left: 0%;
+    }
+    &:last-child {
+        margin-right: 0%;
+    }
 }
+
 
 img {
     display: block;
     width: 100%;
+    object-fit: fill;
 }
 
 .gallery {
@@ -48,7 +62,11 @@ img {
 }
 
 .selected-overlay {
-    border: 5px solid red !important;
+    border: 2px solid red !important;
+}
+
+#overlays:hover {
+    cursor: pointer;
 }
 
 .selected-overlay-list {
@@ -122,7 +140,7 @@ img {
 }
 
 .selected-image {
-    border: 2px solid gray;
+    border: 2px solid blue;
 
 }
 

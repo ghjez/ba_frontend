@@ -1,0 +1,32 @@
+<div cdkDropListGroup>
+    <div class="example-container">
+      <h2>To do</h2>
+  
+      <div
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        [cdkDropListData]="available"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @for (item of available; track item) {
+          <div class="example-box" cdkDrag>{{item.name}}</div>
+        }
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Done</h2>
+  
+      <div
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        [cdkDropListData]="selected"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @for (item of selected; track item) {
+          <div class="example-box" cdkDrag>{{item.name}}</div>
+        }
+      </div>
+    </div>
+  </div>
+  

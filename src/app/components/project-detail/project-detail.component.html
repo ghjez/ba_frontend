@@ -49,6 +49,7 @@
       </div>
     </div>
     <br>
+    <app-chain-config [available]="aiChainModules" (getSelectedEvent)="setAiSelected($event)"></app-chain-config>
     <form data-cy="project-img-upload-form" name="images" (ngSubmit)="uploadImage()">
       <input data-cy="project-img-upload-input" name="images" type="file" (change)="onFilesSelected($event)" multiple accept="image/jpeg,image/jpg,image/png">
       <button data-cy="project-img-upload-button" mat-raised-button color="accent" type="submit">
