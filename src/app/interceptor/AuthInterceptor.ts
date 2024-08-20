@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let apiReq = request.clone();
     if (!request.url.startsWith('http')) {
       apiReq = request.clone({ url: `${environment.apiUrl}/${request.url}`, reportProgress: true });
-      console.log(apiReq);
+      // console.log(apiReq);
     }
 
     if (accessToken && authService.isLoggedIn()) {
@@ -36,8 +36,9 @@ export class AuthInterceptor implements HttpInterceptor {
         },
         //headers: apiReq.headers.append("Access-Control-Allow-Headers", "cache-control,content-type,hash-referer,x-requested-with, x-xsrf-token"),
       });
-      console.log(apiReq);
+      // console.log(apiReq);
     }
+    console.log(apiReq);
     return next.handle(apiReq);
   }
 }

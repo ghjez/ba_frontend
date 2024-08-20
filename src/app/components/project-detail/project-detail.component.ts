@@ -11,9 +11,11 @@ import { Subscription } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatFabButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SecurePipe } from '../../pipes/secure.pipe';
+import {MatListModule} from '@angular/material/list';
+
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { catchError, tap } from 'rxjs/operators';
@@ -32,7 +34,7 @@ import { ChainConfigComponent } from '../chain-config/chain-config.component';
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, FormsModule, SecurePipe, MatGridListModule, ReactiveFormsModule, ChainConfigComponent],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatListModule,FormsModule, SecurePipe, MatGridListModule, ReactiveFormsModule, ChainConfigComponent],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
 })
@@ -69,6 +71,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       this.selectedProject = project;
       this.images = [];
       this.loadImages();
+      this.selectedAiChainModules = [];
       for (let i = 0; i < this.aiModels.length; i++) {
         if (this.selectedProject?.ai_model_id == this.aiModels[i].id) {
           this.aiModelName = this.aiModels[i].name;
@@ -307,7 +310,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
   setAiSelected(data: AiChainModule[]) {
     this.selectedAiChainModules = data;
-    console.log(this.selectedAiChainModules);
+    console.log("selected:", this.selectedAiChainModules);
   }
 
   checkCondition(project: Project): boolean {

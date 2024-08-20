@@ -1,9 +1,5 @@
 @use '@angular/material' as mat;
 
-.selected-image-container img {
-    width: 100%;
-}
-
 .thumbnail {
     position: relative;
     display: inline-block;
@@ -19,42 +15,57 @@
     &:last-child {
         margin-right: 0%;
     }
+
+    img {
+        display: block;
+        //width: 100%;
+        object-fit: fill;
+        object-position: 50% 50%;
+    }
 }
 
-
-img {
-    display: block;
-    width: 100%;
-    object-fit: fill;
-}
 
 .gallery {
-    display: flex;
+    grid-area: 1 / 1 / 2 / 5;
+    display: block;
     overflow-x: auto;
     width: 100%;
     height: 130px;
+    min-height: 130px !important;
     scroll-behavior: smooth;
     padding: 5px;
+
+    div {
+        flex: 0 0 10%; 
+        box-sizing: border-box;
+        padding-right: 5px;
+        overflow: hidden;
+    }
 }
 
-.gallery div {
-    flex: 0 0 10%; 
-    box-sizing: border-box;
-    padding-right: 5px;
-    overflow: hidden;
-}
-
-.selected-image-container {
-    position: relative;
-    height: unset;
-    overflow: auto;
-    scrollbar-width: none;
-    width: 75%;
+.results-list {
+    grid-area: 1 / 5 / 2 / 6;
 }
 
 .gallery-container {
     height: 100%;
-    margin-right: 10px;
+    width: 100%;
+    //margin-right: 10px;
+    //display: flex;
+    //flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) .3fr;
+    grid-template-rows: repeat(5, 1fr) .3fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+.thumbnails_and_selected_image {
+    //height: 100%;
+    //min-width: 70%;
+    //margin-right: 10px;
+    //display: flex;
+    //flex-direction: column;
 }
 
 .gallery-and-button-container {
@@ -83,33 +94,53 @@ img {
 }
 
 .overlays-mat-list {
-    height: 100%;
-}
+    height: 80%;
+    overflow: auto;
 
-.overlays-mat-list mat-list-item:hover {
-    background-color: dimgray;
-    cursor: pointer;
+    & mat-list-item:hover {
+        background-color: dimgray;
+        cursor: pointer;
+    }
 }
 
 .selcted-image-overlays-container {
-    height: calc(100% - 130px);
+    grid-area: 2 / 1 / 6 / 5;
+    //height: calc(100% - 130px);
+    //width: 70%;
     display: flex;
-    justify-content: space-between;
+    //flex-direction: column;
+    //justify-content: space-between;
+    //object-fit: scale-down;
 }
 
-.selected-image-container {
-    flex-grow: 1; 
+.selected-image-container{
+    //height: calc(100% - 130px);
+    position: relative;
+    //height: unset;
+    overflow: auto;
+    scrollbar-width: none;
+    // width: 75%;
+    //height: 95%;
+
+    img {
+        width: fit-content !important;;
+        height: 90%;
+        object-fit: contain;
+        object-position: 50% 50%;
+    } 
 }
 
 .overlays-container {
-    width: 25%;
-    height: 100%;
+    grid-area: 2 / 5 / 6 / 6;
+    //width: 20%;
+    //height: 100%;
     margin-left: 10px;
-    overflow: auto;
+    //overflow: auto;
 }
 
 .visualization-container {
     width: 100%;
+    overflow-y: hidden;
 }
 
 .download-icon {

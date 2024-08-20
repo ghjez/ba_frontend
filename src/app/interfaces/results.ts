@@ -4,7 +4,6 @@ export interface Results {
     project_id: number,
     image_id: number,
     ai_model_id: number,
-    chain_modules: string,
     text_detection_image_url: string,
     text_recognition_image_url: string,
     text_interpretation_image_url: string,

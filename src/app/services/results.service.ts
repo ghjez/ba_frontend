@@ -6,6 +6,7 @@ import { Project } from '../interfaces/project';
 import { Image } from '../interfaces/image';
 import { AiModel } from '../interfaces/ai_model';
 import { environment } from '../../environments/environment';
+import { ChainResultSet } from '../interfaces/chain_result_set';
 
 
 @Injectable({
@@ -29,5 +30,10 @@ export class ResultsService {
   getOverlays(projectId: number): Observable<Results[]> {
     const url = 'store/projects';
     return this.http.get<Results[]>(`${url}/${projectId}/results`);
+  }
+
+  getChainOverlays(projectId: number): Observable<ChainResultSet[]> {
+    const url = 'store/projects';
+    return this.http.get<ChainResultSet[]>(`${url}/${projectId}/chainresults`);
   }
 }

@@ -1,23 +1,32 @@
 
-
 .delete-image-container {
+    max-height: 10rem;
+    max-width: 10rem;
     position: relative;
     display: inline-block;
-}
+    object-position: 50% 50%;
+    object-fit: scale-down;
 
-img {
-    display: block;
-    width: 100%;
-}
+    img {
+        display: block;
+        //width: 100%;
+    }
 
-.delete-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    padding: 5px;
+    .delete-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 30px;
+        height: 30px;
+        //background-color: red;
+        //color: #17365c;
+        cursor: pointer;
+        //padding: 5px;
+
+        --mdc-fab-container-shape: 20%;
+        --mdc-fab-icon-size: 24px;
+    }
 }
 
 .flex-container {
@@ -36,8 +45,10 @@ img {
 .gallery {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
     scrollbar-width: thin;
+    height: max-content;
 }
 
 .gallery div {
@@ -52,23 +63,42 @@ img {
 }
 
 tr {
-    max-height: 40px;
+    height: fit-content;
+    //max-height: 40px;
     min-height: 40px;
-    height: 40px;
+    //height: 40px;
 }
 
 td {
-    width: 500px;
-    font-size: large;
+    width: fit-content;
+    padding-right: 30px;
+    &:last-child{
+        padding-left: 0px;
+    }
+    
+    //width: 500px;
+    //font-size: large;
 }
 
 .vis-button {
-    margin-left: 20px;
+    //margin-left: 20px;
 }
 
 .fixed-names-row-size {
-    width: 230px;
-    font-size: x-large;
+    width: fit-content;
+   // min-width: 100px;
+    //width: 230px;
+    //font-size: x-large;
+    h3 {
+        margin-block: 0;
+        margin: 0;
+        padding: 0;
+        padding-block: 0;
+    
+        font-weight: 500;
+        color: #17365c;
+    }
+    
 }
 
 .edit-button {
@@ -82,7 +112,7 @@ td {
 }
 
 .visualized-lable {
-    padding-left: 58px;
+ //padding-left: 58px;
 }
 
 .aimodel-lable {
@@ -95,6 +125,15 @@ td {
 
 .space-left {
     margin-left: 10px;
+}
+
+form {
+    button {
+        margin-right: 30px;
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
 }
 @media (max-width:800px) { 
     
