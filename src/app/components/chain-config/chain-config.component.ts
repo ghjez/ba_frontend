@@ -49,4 +49,9 @@ export class ChainConfigComponent {
   noReturnPredicate() {
     return false;
   }
+
+  onDelete(item: AiChainModule) {
+    let index = this.selected.indexOf(item, 0);
+    if (index > -1) this.selected.splice(index, 1);
+  }
 }
