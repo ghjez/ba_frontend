@@ -34,11 +34,11 @@ Start the Frontend
 > Before starting the frontend, ensure that the backend was properly set up and is running. See more in the repositories for [backend](https://github.com/ghjez/ba_backend) and [additional content](https://github.com/ghjez/ba_supplementary).
 
 1. Set the URL of the backend by replacing the value of the `apiUrl` parameter inside the `environment.ts` and `environment.development.ts` files.
-These files are located in the `src/environments` folder.
+These files are located in the `src/environments/` folder.
 The default content of both files looks like this:
     ```typescript
     export const environment = {
-        apiUrl: 'http://localhost:8081'
+        apiUrl: 'http://127.0.0.1:8000'
     };
     ```
 
