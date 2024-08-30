@@ -4,7 +4,7 @@ This is a part of my bachelor thesis on deploying a technical drawing processing
 The original [frontend](https://github.com/ailujezi/technical-drawings-frontend) was created by [Julia Ritz](https://github.com/ailujezi).
 
 **Backend:** https://github.com/ghjez/ba_backend  
-**Additional content** (scripts for AI-modules, etc.)**:** https://github.com/ghjez/ba_supplementary
+**Additional content** (scripts for AI-modules, etc.)**:** https://github.com/ghjez/ba_supplementary  
 **Original Readme:** https://github.com/ghjez/ba_frontend/blob/main/README_ORIGINAL.md:
 
 
