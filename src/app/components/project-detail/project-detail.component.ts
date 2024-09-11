@@ -78,6 +78,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         }
       }
       this.getAiChainModules();
+      console.log(this.aiChainModules);
     });
     //Get AIModels on init
     //this.getAIModels();
@@ -208,6 +209,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       for(let module of this.selectedAiChainModules) {
         selectedAiChainModulesIdList.push(module.id)
       }
+
+      console.log(selectedAiChainModulesIdList);
 
       this.resultService.startVisualization(currentProjectId, selectedAiChainModulesIdList).pipe(
         tap(response => {

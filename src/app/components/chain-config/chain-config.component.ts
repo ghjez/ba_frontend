@@ -38,7 +38,7 @@ export class ChainConfigComponent {
         event.currentIndex,
       );
     }
-    
+    this.sendSelectedToParent();
   }
 
   sendSelectedToParent() {
